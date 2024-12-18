@@ -5,7 +5,6 @@ import time
 from torch_cluster import radius_graph
 import torch_geometric
 
-
 ModelEma = ModelEmaV2
 
 
@@ -56,6 +55,7 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
     #atomref = atomref.to(device)
     
     for step, data in enumerate(data_loader):
+        print(data)
         data = data.to(device)
         #data.edge_d_index = radius_graph(data.pos, r=10.0, batch=data.batch, loop=True)
         #data.edge_d_attr = data.edge_attr
@@ -103,6 +103,8 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
                 )
             info_str += 'lr={:.2e}'.format(optimizer.param_groups[0]["lr"])
             logger.info(info_str)
+        
+        break
         
     return mae_metric.avg
 

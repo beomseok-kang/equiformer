@@ -23,8 +23,7 @@ from .drop import EquivariantDropout, EquivariantScalarsDropout, GraphDropPath
 from .gaussian_rbf import GaussianRadialBasisLayer
 
 # for bessel radial basis
-from ocpmodels.models.gemnet.layers.radial_basis import RadialBasis
-
+from .radial_basis import RadialBasis
 
 _RESCALE = True
 _USE_BIAS = True
@@ -34,7 +33,6 @@ _MAX_ATOM_TYPE = 5
 # Statistics of QM9 with cutoff radius = 5
 _AVG_NUM_NODES = 18.03065905448718
 _AVG_DEGREE = 15.57930850982666
-  
 
 def get_norm_layer(norm_type):
     if norm_type == 'graph':

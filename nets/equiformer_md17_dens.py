@@ -23,7 +23,7 @@ from .drop import EquivariantDropout, EquivariantScalarsDropout, GraphDropPath
 from .gaussian_rbf import GaussianRadialBasisLayer
 
 # for bessel radial basis
-from ocpmodels.models.gemnet.layers.radial_basis import RadialBasis
+from .radial_basis import RadialBasis
 
 from .graph_attention_transformer import (get_norm_layer, 
     FullyConnectedTensorProductRescaleNorm, 

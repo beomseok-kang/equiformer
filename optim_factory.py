@@ -11,17 +11,17 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from timm.optim.adafactor import Adafactor
-from timm.optim.adahessian import Adahessian
-from timm.optim.adamp import AdamP
-from timm.optim.lookahead import Lookahead
-from timm.optim.nadam import Nadam
-from timm.optim.novograd import NovoGrad
-from timm.optim.nvnovograd import NvNovoGrad
-from timm.optim.radam import RAdam
-from timm.optim.rmsprop_tf import RMSpropTF
-from timm.optim.sgdp import SGDP
-from timm.optim.adabelief import AdaBelief
+# from timm.optim.adafactor import Adafactor
+# from timm.optim.adahessian import Adahessian
+# from timm.optim.adamp import AdamP
+# from timm.optim.lookahead import Lookahead
+# from timm.optim.nadam import Nadam
+# from timm.optim.novograd import NovoGrad
+# from timm.optim.nvnovograd import NvNovoGrad
+# from timm.optim.radam import RAdam
+# from timm.optim.rmsprop_tf import RMSpropTF
+# from timm.optim.sgdp import SGDP
+# from timm.optim.adabelief import AdaBelief
 
 
 def add_weight_decay(model, weight_decay=1e-5, skip_list=()):
@@ -121,34 +121,34 @@ def create_optimizer_v2(
         optimizer = optim.SGD(parameters, momentum=momentum, nesterov=False, **opt_args)
     elif opt_lower == 'adam':
         optimizer = optim.Adam(parameters, **opt_args) 
-    elif opt_lower == 'adabelief':
-        optimizer = AdaBelief(parameters, rectify=False, **opt_args)
+    # elif opt_lower == 'adabelief':
+    #     optimizer = AdaBelief(parameters, rectify=False, **opt_args)
     elif opt_lower == 'adamw':
         optimizer = optim.AdamW(parameters, **opt_args)
-    elif opt_lower == 'nadam':
-        optimizer = Nadam(parameters, **opt_args)
-    elif opt_lower == 'radam':
-        optimizer = RAdam(parameters, **opt_args)
-    elif opt_lower == 'adamp':        
-        optimizer = AdamP(parameters, wd_ratio=0.01, nesterov=True, **opt_args)
-    elif opt_lower == 'sgdp':
-        optimizer = SGDP(parameters, momentum=momentum, nesterov=True, **opt_args)
+    # elif opt_lower == 'nadam':
+    #     optimizer = Nadam(parameters, **opt_args)
+    # elif opt_lower == 'radam':
+    #     optimizer = RAdam(parameters, **opt_args)
+    # elif opt_lower == 'adamp':        
+    #     optimizer = AdamP(parameters, wd_ratio=0.01, nesterov=True, **opt_args)
+    # elif opt_lower == 'sgdp':
+    #     optimizer = SGDP(parameters, momentum=momentum, nesterov=True, **opt_args)
     elif opt_lower == 'adadelta':
         optimizer = optim.Adadelta(parameters, **opt_args)
-    elif opt_lower == 'adafactor':
-        if not learning_rate:
-            opt_args['lr'] = None
-        optimizer = Adafactor(parameters, **opt_args)
-    elif opt_lower == 'adahessian':
-        optimizer = Adahessian(parameters, **opt_args)
+    # elif opt_lower == 'adafactor':
+    #     if not learning_rate:
+    #         opt_args['lr'] = None
+    #     optimizer = Adafactor(parameters, **opt_args)
+    # elif opt_lower == 'adahessian':
+    #     optimizer = Adahessian(parameters, **opt_args)
     elif opt_lower == 'rmsprop':
         optimizer = optim.RMSprop(parameters, alpha=0.9, momentum=momentum, **opt_args)
-    elif opt_lower == 'rmsproptf':
-        optimizer = RMSpropTF(parameters, alpha=0.9, momentum=momentum, **opt_args)
-    elif opt_lower == 'novograd':
-        optimizer = NovoGrad(parameters, **opt_args)
-    elif opt_lower == 'nvnovograd':
-        optimizer = NvNovoGrad(parameters, **opt_args)
+    # elif opt_lower == 'rmsproptf':
+    #     optimizer = RMSpropTF(parameters, alpha=0.9, momentum=momentum, **opt_args)
+    # elif opt_lower == 'novograd':
+    #     optimizer = NovoGrad(parameters, **opt_args)
+    # elif opt_lower == 'nvnovograd':
+    #     optimizer = NvNovoGrad(parameters, **opt_args)
     #elif opt_lower == 'fusedsgd':
     #    opt_args.pop('eps', None)
     #    optimizer = FusedSGD(parameters, momentum=momentum, nesterov=True, **opt_args)
@@ -168,8 +168,8 @@ def create_optimizer_v2(
         assert False and "Invalid optimizer"
         raise ValueError
 
-    if len(opt_split) > 1:
-        if opt_split[0] == 'lookahead':
-            optimizer = Lookahead(optimizer)
+    # if len(opt_split) > 1:
+    #     if opt_split[0] == 'lookahead':
+    #         optimizer = Lookahead(optimizer)
 
     return optimizer
